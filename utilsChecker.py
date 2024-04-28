@@ -1043,7 +1043,8 @@ def synchronizeVideoKeypoints(keypointList, confidenceList,
     # Detect activity, which determines sync function that gets used
     isGait = detectGaitAllVideos(mkrSpeedList,allMarkerList,confSyncList,markers4Ankles,sampleFreq)
     if isGait:
-        print("This trial has been detected as gait")
+        print("This trial has been detected as gait - manually overwriting to False")
+        isGait = False
     else:
         print("This trial has been detected as NOT gait")
     isHandPunch,handForPunch = detectHandPunchAllVideos(handPunchVertPositionList,sampleFreq)
