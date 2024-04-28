@@ -108,6 +108,22 @@ def main(sessionName, trialName, trial_id, camerasToUse=['all'],
         filtFreqs = {'gait':12, 'default':500} # defaults to framerate/2
     else:
         filtFreqs = {'gait':filterfrequency, 'default':filterfrequency}
+    
+    # Hard-code filter frequencies based on the activity
+    if 'LS' in trialName: # squat
+        filtFreqs = {'gait':filterfrequency, 'default':4}
+    elif 'DJ' in trialName: # drop-jump
+        filtFreqs = {'gait':filterfrequency, 'default':30}
+    elif 'DC' in trialName: # drop-cut
+        filtFreqs = {'gait':filterfrequency, 'default':50}
+        # filtFreqs = {'gait':filterfrequency, 'default':1}
+    elif 'TH' in trialName: # triple hop
+        filtFreqs = {'gait':filterfrequency, 'default':50}
+    elif 'C9' in trialName: # run-cut
+        filtFreqs = {'gait':filterfrequency, 'default':60}
+    else: # keep the previous settings
+        None
+
 
     # %% Paths to pose detector folder for local testing.
     if poseDetector == 'OpenPose':
@@ -434,6 +450,8 @@ def main(sessionName, trialName, trial_id, camerasToUse=['all'],
         # Check if shoulder model.
         if 'shoulder' in sessionMetadata['openSimModel']:
             suffix_model = '_shoulder'
+        elif 'KA' in sessionMetadata['openSimModel']:
+            suffix_model = '_KA'
         else:
             suffix_model = ''
         

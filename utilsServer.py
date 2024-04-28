@@ -26,9 +26,9 @@ from utils import sendStatusEmail
 from utils import importMetadata
 from utils import checkAndGetPosePickles
 from utils import getTrialNameIdMapping
+from utils import changeSessionMetadata
 from utilsAuth import getToken
 from utilsAPI import getAPIURL
-
 
 API_URL = getAPIURL()
 API_TOKEN = getToken()
@@ -352,6 +352,10 @@ def batchReprocess(session_ids,calib_id,static_id,dynamic_trialNames,poseDetecto
                      headers = {"Authorization": "Token {}".format(API_TOKEN)}).json()
         hasWritePermissions = permissions['isAdmin'] or permissions['isOwner']
 
+        # Change the metadata of the trial
+        newMetadata = {'openSimModel':'LaiUhlrich2022_KA',
+                       'filterfrequency':15}
+        changeSessionMetadata(session_ids,newMetadata)
 
         if calib_id == None:
             calib_id_toProcess = getCalibrationTrialID(session_id)

@@ -1042,7 +1042,10 @@ def synchronizeVideoKeypoints(keypointList, confidenceList,
     
     # Detect activity, which determines sync function that gets used
     isGait = detectGaitAllVideos(mkrSpeedList,allMarkerList,confSyncList,markers4Ankles,sampleFreq)
-    
+    if isGait:
+        print("This trial has been detected as gait")
+    else:
+        print("This trial has been detected as NOT gait")
     isHandPunch,handForPunch = detectHandPunchAllVideos(handPunchVertPositionList,sampleFreq)
     if isHandPunch:
         syncActivity = 'handPunch'
@@ -1060,6 +1063,7 @@ def synchronizeVideoKeypoints(keypointList, confidenceList,
     else: 
         filtFreq = filtFreqs['default']
     
+    print("Using filtFreq: ", filtFreq)
     # Filter keypoint data
     # sdKernel = sampleFreq/(2*np.pi*filtFreq) # not currently used, but in case using gaussian smoother (smoothKeypoints function) instead of butterworth to filter keypoints
     keyFiltList = []
