@@ -336,7 +336,13 @@ def batchReprocess(session_ids,calib_id,static_id,dynamic_trialNames,poseDetecto
     # extract trial ids from trial names
     if dynamic_trialNames is not None and len(dynamic_trialNames)>0:
         trialNames = getTrialNameIdMapping(session_ids[0])
-        dynamic_ids = [trialNames[name]['id'] for name in dynamic_trialNames]
+        all_trials = [name for name in trialNames if (name != 'neutral' and name != 'calibration')]
+        
+        if len(dynamic_trialNames[0]) != 2:
+            dynamic_ids = [trialNames[name]['id'] for name in dynamic_trialNames]
+        else:
+            dynamic_ids = [trialNames[name]['id'] for name in all_trials if any(activity in name for activity in dynamic_trialNames)]
+
     else:
         dynamic_ids = dynamic_trialNames
     
@@ -353,8 +359,7 @@ def batchReprocess(session_ids,calib_id,static_id,dynamic_trialNames,poseDetecto
         hasWritePermissions = permissions['isAdmin'] or permissions['isOwner']
 
         # Change the metadata of the trial
-        newMetadata = {'openSimModel':'LaiUhlrich2022_KA',
-                       'filterfrequency':15}
+        newMetadata = {'openSimModel':'LaiUhlrich2022_KA'}
         changeSessionMetadata(session_ids,newMetadata)
 
         if calib_id == None:

@@ -97,7 +97,8 @@ session_ids = [
 
 calib_id = [] # None (auto-selected trial), [] (skip), or string of specific trial_id
 static_id = None # None (auto-selected trial), [] (skip), or string of specific trial_id
-dynamic_trialNames = ['DC_R1'] # None (all dynamic trials), [] (skip), or list of trial names
+dynamic_trialNames = ['SLDJ_L1'] # None (all dynamic trials), [] (skip), list of trial names, or
+                              # list of activities out of ['DJ', 'LS', 'DC', 'TH', 'C9'] for drop-jump, leg-squat, drop-cut, triple-hop, cut-90
 
 # Select which pose estimation model to use; options are 'OpenPose' and 'hrnet'.
 # If the same pose estimation model was used when collecting data with the web
