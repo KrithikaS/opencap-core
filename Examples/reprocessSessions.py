@@ -96,8 +96,9 @@ session_ids = [
 # static_id. A list of strings is allowed for dynamic_trialNames.
 
 calib_id = [] # None (auto-selected trial), [] (skip), or string of specific trial_id
-static_id = None # None (auto-selected trial), [] (skip), or string of specific trial_id
-dynamic_trialNames = ['SLDJ_L1'] # None (all dynamic trials), [] (skip), list of trial names, or
+# NOTE: If static_id is None, all local files will be overwritten to prevent results using different neutral files
+static_id = [] # None (auto-selected trial), [] (skip), or string of specific trial_id
+dynamic_trialNames = ['SLDJ_L2'] # None (all dynamic trials), [] (skip), list of trial names, or
                               # list of activities out of ['DJ', 'LS', 'DC', 'TH', 'C9'] for drop-jump, leg-squat, drop-cut, triple-hop, cut-90
 
 # Select which pose estimation model to use; options are 'OpenPose' and 'hrnet'.
