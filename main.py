@@ -116,6 +116,7 @@ def main(sessionName, trialName, trial_id, camerasToUse=['all'],
         filtFreqs = {'gait':filterfrequency, 'default':30}
     elif 'DC' in trialName: # drop-cut
         filtFreqs = {'gait':filterfrequency, 'default':50}
+        # filtFreqs = {'gait':filterfrequency, 'default':1}
     elif 'TH' in trialName: # triple hop
         filtFreqs = {'gait':filterfrequency, 'default':50}
     elif 'C9' in trialName: # run-cut
