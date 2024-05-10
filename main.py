@@ -162,7 +162,7 @@ def main(sessionName, trialName, trial_id, camerasToUse=['all'],
     # %% Dump settings in yaml.
     if not extrinsicsTrial:
         pathSettings = os.path.join(postAugmentationDir,
-                                    'Settings_' + trialName + '.yaml')
+                                    'Settings_' + trial_id + '.yaml')
         settings = {
             'poseDetector': poseDetector, 
             'augmenter_model': augmenterModel, 
@@ -288,7 +288,7 @@ def main(sessionName, trialName, trial_id, camerasToUse=['all'],
                                                   trialName + ".trc")
     else:
         pathOutputFiles[trialName] = os.path.join(preAugmentationDir,
-                                                  trialName + ".trc")
+                                                  trial_id + ".trc")
     
     # Trial relative path
     trialRelativePath = os.path.join('InputMedia', trialName, trial_id)
@@ -399,14 +399,14 @@ def main(sessionName, trialName, trial_id, camerasToUse=['all'],
     pathAugmentedOutputFiles = {}
     if genericFolderNames:
         pathAugmentedOutputFiles[trialName] = os.path.join(
-                postAugmentationDir, trialName + ".trc")
+                postAugmentationDir, trial_id + ".trc")
     else:
         if benchmark:
             pathAugmentedOutputFiles[trialName] = os.path.join(
                     postAugmentationDir, trialName + "_" + augmenterModelName +".trc")
         else:
             pathAugmentedOutputFiles[trialName] = os.path.join(
-                    postAugmentationDir, trialName + "_" + augmenterModelName +".trc")
+                    postAugmentationDir, trial_id + "_" + augmenterModelName +".trc")
     
     if runMarkerAugmentation:
         os.makedirs(postAugmentationDir, exist_ok=True)    
@@ -528,7 +528,7 @@ def main(sessionName, trialName, trial_id, camerasToUse=['all'],
                 try:
                     pathOutputIK = runIKTool(
                         pathGenericSetupFile4IK, pathScaledModel, 
-                        pathTRCFile4IK, outputIKDir, IKFileName=trialName)
+                        pathTRCFile4IK, outputIKDir)
                 except Exception as e:
                     if len(e.args) == 2: # specific exception
                         raise Exception(e.args[0], e.args[1])
