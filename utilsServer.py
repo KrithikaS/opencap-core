@@ -359,7 +359,8 @@ def batchReprocess(session_ids,calib_id,static_id,dynamic_trialNames,poseDetecto
         hasWritePermissions = permissions['isAdmin'] or permissions['isOwner']
 
         # Change the metadata of the trial
-        newMetadata = {'openSimModel':'LaiUhlrich2022_KA'}
+        newMetadata = {'openSimModel':'LaiUhlrich2022_KA',
+                        'filterfrequency':15}
         changeSessionMetadata(session_ids,newMetadata)
 
         if calib_id == None:
