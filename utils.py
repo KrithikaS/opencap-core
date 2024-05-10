@@ -785,7 +785,7 @@ def postMotionData(trial_id,session_path,trial_name=None,isNeutral=False,
     else:
         # post ik data
         deleteResult(trial_id, tag='ik_results')
-        ikPath = os.path.join(session_path,'OpenSimData','Kinematics',trial_name + '.mot')
+        ikPath = os.path.join(session_path,'OpenSimData','Kinematics',trial_id + '.mot')
         postFileToTrial(ikPath,trial_id,tag='ik_results',device_id='all')
         
     return
