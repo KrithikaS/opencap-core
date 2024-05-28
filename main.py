@@ -380,7 +380,7 @@ def main(sessionName, trialName, trial_id, camerasToUse=['all'],
                 raise Exception(exception, traceback.format_exc())
         
         # Throw an error if not enough data
-        if keypoints3D.shape[2] < 10:
+        if keypoints3D.shape[2] < 10: #Orig is 10
             e1 = 'Error - less than 10 good frames of triangulated data.'
             raise Exception(e1,e1)
     
