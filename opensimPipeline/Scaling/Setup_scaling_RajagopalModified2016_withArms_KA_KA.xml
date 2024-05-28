@@ -119,6 +119,10 @@
 									<!--Names of two markers, the distance between which is used to compute a body scale factor.-->
 									<markers> r.ASIS_study r_knee_study</markers>
 								</MarkerPair>
+								<MarkerPair>
+									<!--Names of two markers, the distance between which is used to compute a body scale factor.-->
+									<markers> r_knee_study r_mknee_study</markers>
+								</MarkerPair>
 							</objects>
 							<groups />
 						</MarkerPairSet>
@@ -175,6 +179,10 @@
 									<!--Names of two markers, the distance between which is used to compute a body scale factor.-->
 									<markers> L.ASIS_study L_knee_study</markers>
 								</MarkerPair>
+								<MarkerPair>
+									<!--Names of two markers, the distance between which is used to compute a body scale factor.-->
+									<markers> L_knee_study L_mknee_study</markers>
+								</MarkerPair>
 							</objects>
 							<groups />
 						</MarkerPairSet>
@@ -193,7 +201,7 @@
 							<groups />
 						</BodyScaleSet>
 					</Measurement>
-					<Measurement name="pelvisXY">
+					<Measurement name="pelvisX">
 						<!--Flag to turn on and off scaling for this measurement.-->
 						<apply>true</apply>
 						<!--Set of marker pairs used to determine the scale factors.-->
@@ -215,7 +223,31 @@
 							<objects>
 								<BodyScale name="pelvis">
 									<!--Axes (X Y Z) along which to scale a body. For example, 'X Y Z' scales along all three axes, and 'Y' scales just along the Y axis.-->
-									<axes> X Y</axes>
+									<axes> X</axes>
+								</BodyScale>
+							</objects>
+							<groups />
+						</BodyScaleSet>
+					</Measurement>
+					<Measurement name="pelvisY">
+						<!--Flag to turn on and off scaling for this measurement.-->
+						<apply>true</apply>
+						<!--Set of marker pairs used to determine the scale factors.-->
+						<MarkerPairSet>
+							<objects>
+								<MarkerPair>
+									<!--Names of two markers, the distance between which is used to compute a body scale factor.-->
+									<markers> r.ASIS_study L.ASIS_study</markers>
+								</MarkerPair>
+							</objects>
+							<groups />
+						</MarkerPairSet>
+						<!--Set of bodies to be scaled by this measurement.-->
+						<BodyScaleSet>
+							<objects>
+								<BodyScale name="pelvis">
+									<!--Axes (X Y Z) along which to scale a body. For example, 'X Y Z' scales along all three axes, and 'Y' scales just along the Y axis.-->
+									<axes> Y</axes>
 								</BodyScale>
 							</objects>
 							<groups />
@@ -473,7 +505,7 @@
 						<!--Whether or not this task will be used during inverse kinematics solve, default is true.-->
 						<apply>true</apply>
 						<!--Weight given to the task when solving inverse kinematics problems, default is 0.-->
-						<weight>20</weight>
+						<weight>30</weight>
 					</IKMarkerTask>
 					<IKMarkerTask name="r_mknee_study">
 						<!--Whether or not this task will be used during inverse kinematics solve, default is true.-->
@@ -485,13 +517,13 @@
 						<!--Whether or not this task will be used during inverse kinematics solve, default is true.-->
 						<apply>true</apply>
 						<!--Weight given to the task when solving inverse kinematics problems, default is 0.-->
-						<weight>20</weight>
+						<weight>30</weight>
 					</IKMarkerTask>
 					<IKMarkerTask name="r_mankle_study">
 						<!--Whether or not this task will be used during inverse kinematics solve, default is true.-->
 						<apply>true</apply>
 						<!--Weight given to the task when solving inverse kinematics problems, default is 0.-->
-						<weight>20</weight>
+						<weight>30</weight>
 					</IKMarkerTask>
 					<IKMarkerTask name="r_toe_study">
 						<!--Whether or not this task will be used during inverse kinematics solve, default is true.-->
@@ -515,7 +547,7 @@
 						<!--Whether or not this task will be used during inverse kinematics solve, default is true.-->
 						<apply>true</apply>
 						<!--Weight given to the task when solving inverse kinematics problems, default is 0.-->
-						<weight>20</weight>
+						<weight>30</weight>
 					</IKMarkerTask>
 					<IKMarkerTask name="L_mknee_study">
 						<!--Whether or not this task will be used during inverse kinematics solve, default is true.-->
@@ -527,13 +559,13 @@
 						<!--Whether or not this task will be used during inverse kinematics solve, default is true.-->
 						<apply>true</apply>
 						<!--Weight given to the task when solving inverse kinematics problems, default is 0.-->
-						<weight>20</weight>
+						<weight>30</weight>
 					</IKMarkerTask>
 					<IKMarkerTask name="L_mankle_study">
 						<!--Whether or not this task will be used during inverse kinematics solve, default is true.-->
 						<apply>true</apply>
 						<!--Weight given to the task when solving inverse kinematics problems, default is 0.-->
-						<weight>20</weight>
+						<weight>30</weight>
 					</IKMarkerTask>
 					<IKMarkerTask name="L_toe_study">
 						<!--Whether or not this task will be used during inverse kinematics solve, default is true.-->
