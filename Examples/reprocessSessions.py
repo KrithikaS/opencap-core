@@ -93,10 +93,10 @@ API_TOKEN = getToken()
 # Traversing
 session_ids = [
                 # '1443ed48-3cbe-4226-a2cc-bc34e21a0fb3', # S1 - Change the neutral number of frames to 5 from 10
-                # '5249a0b7-282d-4339-bef2-8e3b3dc88372', # S2
+                '5249a0b7-282d-4339-bef2-8e3b3dc88372', # S2
                 # '9c1b5be7-cf95-4f0f-abc2-5f117b134123', # S3
                 # '26c51f1d-6b16-4a80-af35-de61818a2c85', # S4
-                '81121c4c-f197-4323-b4c5-a7649a5c5f93', # S5
+                # '81121c4c-f197-4323-b4c5-a7649a5c5f93', # S5
                 # '1b365060-f439-406d-a98d-cbd1be79966b', # S6
                 # 'b09da98f-df14-4285-8b24-a3b3e4df05d6', # S7
                 # 'd353fa2a-1c02-40f7-9a1c-f4dbe5d02a83', # S8
@@ -119,6 +119,37 @@ session_ids = [
                 # 'f09528a1-0992-409f-9f8f-e7e852b8e4e8', # S28
                 # 'eb517e30-17c8-4b00-a46b-8d564a53b5f8', # S29
                 # '9fd8370e-4fd3-4caa-a085-42c29eb497b5', # S30
+                ]
+
+# In-the-wild
+session_ids = [
+                # '4218da28-7720-4994-8b0d-7eb99c38877f', # S1
+                # '24192a02-5d1c-4302-834d-c620415575af', # S2
+                # '748397dc-2524-4bc1-ab3a-fbe01047e466', # S3
+                # '1328dbe4-f7cc-4ed0-9a0f-33fd9738e926', # S4
+                # '02dcf8d9-8d97-49ee-952b-9b9b9c446f44', # S5
+                # '322fb9dc-dfda-4ee0-a6e2-af48c6c51816', # S6
+                # 'fde40b93-2f34-4a13-90ed-10f8d59ab7d8', # S7
+                # '6e845fec-c30b-4434-ac7c-096cbcfb70c3', # S8
+                # '88a9849d-bfce-4e93-94e4-4c35e8293c20', # S9
+                # 'cee26815-b3e8-4ad7-a016-cd506ff31a29', # S10
+                # 'a6525d1-42dc-4af1-9dc6-6414894ee78a', # S11
+                # 'd9f9ee36-5584-4d4b-b31b-fa6150034b92', # S12
+                # 'be0fb943-4606-4878-ad71-6d7ccb102f0f', # S13
+                # '72a31a2a-5d01-4818-bb2d-77719a26d334', # S14
+                # '1c01a02b-5450-4219-9ea7-31d034ad6ac3', # S15
+                # '8ce12017-1d1c-47c3-bc0b-cb75948a9938', # S16
+                # 'dfce5643-dfc0-471a-8c6b-caf746c6e003', # S17
+                # '2028197a-c1c8-4d09-ad43-8cf8fc6fa657', # S18
+                # '70bcbb66-fcab-45f0-9ea8-b23912200cb7', # S21
+                # 'e1d50e78-a98f-481d-b130-dba286ae76ff', # S22
+                # '5adf2b4d-cabe-4c8b-84d5-2ecac62a44ab', # S23
+                # '02159c08-3dc0-43bb-9173-a3fdf1fc6886', # S24
+                # '60dbf22c-d84a-48c2-af89-f88e934e96c3', # S25
+                # '21db7e28-9123-46e0-9cb6-02a9c76cd8b9', # S26
+                '07732617-ea7d-4243-be1c-327cf33cf14f', # S28
+                # 'b1642639-d9e1-499f-a7eb-82f55c9a2dd5', # S29
+                # 'eeb943ec-7f94-4472-aa2a-86bfdd203577', # S30
                 ]
 
 # Select which trials to reprocess. You can reprocess all trials in the session 
