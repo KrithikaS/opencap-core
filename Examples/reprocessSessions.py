@@ -206,4 +206,5 @@ deleteLocalFolder = False
 batchReprocess(session_ids,calib_id,static_id,dynamic_trialNames,
                poseDetector=poseDetector,
                resolutionPoseDetection=resolutionPoseDetection,
-               deleteLocalFolder=deleteLocalFolder)
+               deleteLocalFolder=deleteLocalFolder,
+               cameras_to_use=['all_available'])
