@@ -59,8 +59,8 @@ API_TOKEN = getToken()
 # Example
 # session_ids = ['23d52d41-69fe-47cf-8b60-838e4268dd50']
 
-# Stationary
-# session_ids = [
+session_ids = [
+                # Stationary
                 # 'dc95f941-b377-4c0f-929f-c18fc3a202f1', # S1
                 # '332f5657-efa0-454b-8f82-e63488096006', # S2
                 # 'd5ff6e67-c237-4000-86a4-47b10b31e33b', # S3
@@ -84,16 +84,14 @@ API_TOKEN = getToken()
                 # 'a9ec7429-fd69-4922-b4b4-4ce41b4570c9', # S23
                 # '3409b96e-90cb-4ef8-a67e-b72d7407d0f4', # S24
                 # '373c45d0-dc2d-4eb4-bb0e-4cc6dce6301f', # S25
-                # 'b011b3e2-203a-4e98-87fd-c6ea4d95acbf', # S26
+                'b011b3e2-203a-4e98-87fd-c6ea4d95acbf', # S26
                 # 'af17abef-7507-48f6-941b-25d152d317ed', # S28 - Change the neutral number of frames to 5 from 10
                 # 'd10751a5-7e94-495a-94d0-2dd229ca39e0', # S29
                 # 'e742eb1c-efbc-4c17-befc-a772150ca84d', # S30
-                # ]
 
-# Traversing
-session_ids = [
+                # Traversing
                 # '1443ed48-3cbe-4226-a2cc-bc34e21a0fb3', # S1 - Change the neutral number of frames to 5 from 10
-                '5249a0b7-282d-4339-bef2-8e3b3dc88372', # S2
+                # '5249a0b7-282d-4339-bef2-8e3b3dc88372', # S2
                 # '9c1b5be7-cf95-4f0f-abc2-5f117b134123', # S3
                 # '26c51f1d-6b16-4a80-af35-de61818a2c85', # S4
                 # '81121c4c-f197-4323-b4c5-a7649a5c5f93', # S5
@@ -119,10 +117,8 @@ session_ids = [
                 # 'f09528a1-0992-409f-9f8f-e7e852b8e4e8', # S28
                 # 'eb517e30-17c8-4b00-a46b-8d564a53b5f8', # S29
                 # '9fd8370e-4fd3-4caa-a085-42c29eb497b5', # S30
-                ]
-
-# In-the-wild
-session_ids = [
+                
+                # In-the-wild
                 # '4218da28-7720-4994-8b0d-7eb99c38877f', # S1
                 # '24192a02-5d1c-4302-834d-c620415575af', # S2
                 # '748397dc-2524-4bc1-ab3a-fbe01047e466', # S3
@@ -147,7 +143,7 @@ session_ids = [
                 # '02159c08-3dc0-43bb-9173-a3fdf1fc6886', # S24
                 # '60dbf22c-d84a-48c2-af89-f88e934e96c3', # S25
                 # '21db7e28-9123-46e0-9cb6-02a9c76cd8b9', # S26
-                '07732617-ea7d-4243-be1c-327cf33cf14f', # S28
+                # '07732617-ea7d-4243-be1c-327cf33cf14f', # S28
                 # 'b1642639-d9e1-499f-a7eb-82f55c9a2dd5', # S29
                 # 'eeb943ec-7f94-4472-aa2a-86bfdd203577', # S30
                 ]
@@ -163,7 +159,7 @@ session_ids = [
 
 calib_id = [] # None (auto-selected trial), [] (skip), or string of specific trial_id
 static_id = None # None (auto-selected trial), [] (skip), or string of specific trial_id
-dynamic_trialNames = None # None (all dynamic trials), [] (skip), list of trial names, or
+dynamic_trialNames = ['DC_R1'] #['WC90_L', 'WC90_L2', 'WC90_L3', 'WC90_L4', 'WC90_R1', 'WC90_R2', 'WC90_R3', 'WCTH_R3'] # None (all dynamic trials), [] (skip), list of trial names, or
                               # list of activities out of ['DJ', 'LS', 'DC', 'TH', 'C9'] for drop-jump, leg-squat, drop-cut, triple-hop, cut-90
 
 # Select which pose estimation model to use; options are 'OpenPose' and 'hrnet'.
