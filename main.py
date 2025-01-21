@@ -12,6 +12,7 @@ import glob
 import numpy as np
 import yaml
 import traceback
+import csv #imported csv to save camera data to a "availablecameras" file
 
 import logging
 logging.basicConfig(level=logging.INFO)
@@ -375,6 +376,26 @@ def main(sessionName, trialName, trial_id, cameras_to_use=['all'],
         if camerasToUse_c[0] != 'all' and len(camerasToUse_c) < 2:
             exception = 'At least two videos are required for 3D reconstruction, video upload likely failed for one or more cameras.'
             raise Exception(exception, exception)
+        
+        #to save which available cameras to a csv file that are being used for the session and dynamic trials
+        if trialName != 'neutral':
+            camerasUsedOutput = ', '.join(camerasToUse_c)
+            sessionNameList = [sessionName]
+            trialNameList = [trialName]
+
+            with open('C:/Users/starr/repos/opencap-core/Examples/Data/availablecameras.csv', 'a', newline='') as file:
+                writer = csv.writer(file)
+
+                data_saved = False
+
+                for session, trial in zip(sessionNameList, trialNameList):
+                    writer.writerow([session, trial, camerasUsedOutput])
+                    data_saved = True
+
+                if data_saved: 
+                    print('Data saved successfully to availablecameras.csv')
+                else: 
+                    print('Data not saved to file')
             
         # For neutral, we do not allow reprocessing with not all cameras.
         # The reason is that it affects extrinsics selection, and then you can only process
