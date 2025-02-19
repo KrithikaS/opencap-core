@@ -44,7 +44,7 @@ import os
 import sys
 sys.path.append(os.path.abspath('./..'))
 
-from utilsServer import batchReprocess
+from utilsServer import batchReprocess, updated_camera_list
 from utilsAPI import getAPIURL
 from utilsAuth import getToken
 
@@ -84,10 +84,10 @@ session_ids = [
                 # 'a9ec7429-fd69-4922-b4b4-4ce41b4570c9', # S23
                 # '3409b96e-90cb-4ef8-a67e-b72d7407d0f4', # S24
                 # '373c45d0-dc2d-4eb4-bb0e-4cc6dce6301f', # S25
-                'b011b3e2-203a-4e98-87fd-c6ea4d95acbf', # S26
+                #'b011b3e2-203a-4e98-87fd-c6ea4d95acbf', # S26
                 # 'af17abef-7507-48f6-941b-25d152d317ed', # S28 - Change the neutral number of frames to 5 from 10
                 # 'd10751a5-7e94-495a-94d0-2dd229ca39e0', # S29
-                # 'e742eb1c-efbc-4c17-befc-a772150ca84d', # S30
+                 #'e742eb1c-efbc-4c17-befc-a772150ca84d', # S30
 
                 # Traversing
                 # '1443ed48-3cbe-4226-a2cc-bc34e21a0fb3', # S1 - Change the neutral number of frames to 5 from 10
@@ -116,7 +116,7 @@ session_ids = [
                 # 'c8ec5277-0adc-4afb-a7c0-a767dc9fa5d6', # S26
                 # 'f09528a1-0992-409f-9f8f-e7e852b8e4e8', # S28
                 # 'eb517e30-17c8-4b00-a46b-8d564a53b5f8', # S29
-                # '9fd8370e-4fd3-4caa-a085-42c29eb497b5', # S30
+                 '9fd8370e-4fd3-4caa-a085-42c29eb497b5', # S30
                 
                 # In-the-wild
                 # '4218da28-7720-4994-8b0d-7eb99c38877f', # S1
@@ -159,7 +159,7 @@ session_ids = [
 
 calib_id = [] # None (auto-selected trial), [] (skip), or string of specific trial_id
 static_id = None # None (auto-selected trial), [] (skip), or string of specific trial_id
-dynamic_trialNames = ['DC_R1'] #['WC90_L', 'WC90_L2', 'WC90_L3', 'WC90_L4', 'WC90_R1', 'WC90_R2', 'WC90_R3', 'WCTH_R3'] # None (all dynamic trials), [] (skip), list of trial names, or
+dynamic_trialNames = ['C9'] #['WC90_L', 'WC90_L2', 'WC90_L3', 'WC90_L4', 'WC90_R1', 'WC90_R2', 'WC90_R3', 'WCTH_R3'] # None (all dynamic trials), [] (skip), list of trial names, or
                               # list of activities out of ['DJ', 'LS', 'DC', 'TH', 'C9'] for drop-jump, leg-squat, drop-cut, triple-hop, cut-90
 
 # Select which pose estimation model to use; options are 'OpenPose' and 'hrnet'.
@@ -195,12 +195,18 @@ resolutionPoseDetection = '1x736'
 # Set deleteLocalFolder to False to keep a local copy of the data. If you are 
 # reprocessing a session that you collected, data will get written to the database
 # regardless of your selection. If True, the local copy will be deleted.
-deleteLocalFolder = False
-      
+deleteLocalFolder = False     
+
+exclude_front_camera = True
+if exclude_front_camera:
+    cameras_to_use = updated_camera_list(session_ids)
+else:
+    cameras_to_use = ['all_available']
+     #for 3 camera trials, the available cameras are saved to a csv file. 
 
 # %% Process data.
 batchReprocess(session_ids,calib_id,static_id,dynamic_trialNames,
                poseDetector=poseDetector,
                resolutionPoseDetection=resolutionPoseDetection,
                deleteLocalFolder=deleteLocalFolder,
-               cameras_to_use=['all_available'])
+               cameras_to_use=cameras_to_use)
