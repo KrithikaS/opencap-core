@@ -5,6 +5,11 @@ import requests
 import json
 import logging
 
+#added for the last portion of code to read in the Front camera excel sheet
+import pandas as pd
+import numpy as np
+import csv
+
 from main import main
 from utils import getDataDirectory
 from utils import getTrialName
@@ -483,3 +488,35 @@ def runTestSession(pose='all',isDocker=True):
         raise Exception('Failed status check. Stopped.')
         
     logging.info("\n\n\nStatus check succeeded. \n\n")
+
+def updated_camera_list(session_ids):
+
+    camera_data = pd.read_excel('C:/Users/starr/repos/opencap-core/Examples/Data/front_camera_list.xlsx', engine='openpyxl')
+    
+    camera_array = np.array(camera_data) # creating an array from the sheet
+
+    #camera_array = np.delete(camera_array, [3, 4] , axis = 1) # removing the last two columns without any data
+    #print(camera_array) #testing that the array was shown
+
+    for session_id in session_ids:
+        camera_options = ['Cam0', 'Cam1', 'Cam2'] # setting the valid camera options
+        #print(session_id)
+        index = np.where(camera_array == session_id) # locating the session ID in the array
+
+        if index[0].size > 0:
+            front_camera = camera_array[index[0], index[1] + 1] # looking for the value to the right of the sessionID
+            front_camera = front_camera[0] #making it into a non array vaule, idk if this is needed
+            #print(front_camera)
+        else:
+            print("Session ID not found in list")
+
+        if front_camera in camera_options:
+            camera_options.remove(front_camera)
+            two_cameras = camera_options
+            #print(f"Removed {front_camera} from camerasToUse_c")
+            cameras_to_use = two_cameras
+            #print(cameras_to_use)
+        else:
+            cameras_to_use = ['all available']
+            print("Front Camera not found in camerasToUse_c")
+    return cameras_to_use

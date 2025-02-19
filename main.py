@@ -383,7 +383,8 @@ def main(sessionName, trialName, trial_id, cameras_to_use=['all'],
             sessionNameList = [sessionName]
             trialNameList = [trialName]
 
-            with open('C:/Users/starr/repos/opencap-core/Examples/Data/availablecameras.csv', 'a', newline='') as file:
+            #change the file name depening on where you want to save, for 3 camera trials "availablecameras.csv", or "twocamerasused"
+            with open('C:/Users/starr/repos/opencap-core/Examples/Data/twocamerasused.csv', 'a', newline='') as file:
                 writer = csv.writer(file)
 
                 data_saved = False
