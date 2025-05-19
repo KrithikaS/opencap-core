@@ -84,7 +84,7 @@ session_ids = [
                 # 'a9ec7429-fd69-4922-b4b4-4ce41b4570c9', # S23
                 # '3409b96e-90cb-4ef8-a67e-b72d7407d0f4', # S24
                 # '373c45d0-dc2d-4eb4-bb0e-4cc6dce6301f', # S25
-                'b011b3e2-203a-4e98-87fd-c6ea4d95acbf', # S26
+                # 'b011b3e2-203a-4e98-87fd-c6ea4d95acbf', # S26
                 # 'af17abef-7507-48f6-941b-25d152d317ed', # S28 - Change the neutral number of frames to 5 from 10
                 # 'd10751a5-7e94-495a-94d0-2dd229ca39e0', # S29
                 # 'e742eb1c-efbc-4c17-befc-a772150ca84d', # S30
@@ -128,8 +128,9 @@ session_ids = [
                 # 'fde40b93-2f34-4a13-90ed-10f8d59ab7d8', # S7
                 # '6e845fec-c30b-4434-ac7c-096cbcfb70c3', # S8
                 # '88a9849d-bfce-4e93-94e4-4c35e8293c20', # S9
+                # 'ad3f5a98-32d3-4282-8515-372e2c9dd5d6', # S9 Part 2
                 # 'cee26815-b3e8-4ad7-a016-cd506ff31a29', # S10
-                # 'a6525d1-42dc-4af1-9dc6-6414894ee78a', # S11
+                # '3a6525d1-42dc-4af1-9dc6-6414894ee78a', # S11
                 # 'd9f9ee36-5584-4d4b-b31b-fa6150034b92', # S12
                 # 'be0fb943-4606-4878-ad71-6d7ccb102f0f', # S13
                 # '72a31a2a-5d01-4818-bb2d-77719a26d334', # S14
@@ -146,6 +147,7 @@ session_ids = [
                 # '07732617-ea7d-4243-be1c-327cf33cf14f', # S28
                 # 'b1642639-d9e1-499f-a7eb-82f55c9a2dd5', # S29
                 # 'eeb943ec-7f94-4472-aa2a-86bfdd203577', # S30
+                # '7115cbee-b70b-4a31-a8df-c38b12b3f28e', # S30 Part 2
                 ]
 
 # Select which trials to reprocess. You can reprocess all trials in the session 
@@ -159,7 +161,7 @@ session_ids = [
 
 calib_id = [] # None (auto-selected trial), [] (skip), or string of specific trial_id
 static_id = None # None (auto-selected trial), [] (skip), or string of specific trial_id
-dynamic_trialNames = ['DC_R1'] #['WC90_L', 'WC90_L2', 'WC90_L3', 'WC90_L4', 'WC90_R1', 'WC90_R2', 'WC90_R3', 'WCTH_R3'] # None (all dynamic trials), [] (skip), list of trial names, or
+dynamic_trialNames = ['C9'] #['WC90_L', 'WC90_L2', 'WC90_L3', 'WC90_L4', 'WC90_R1', 'WC90_R2', 'WC90_R3', 'WCTH_R3'] # None (all dynamic trials), [] (skip), list of trial names, or
                               # list of activities out of ['DJ', 'LS', 'DC', 'TH', 'C9'] for drop-jump, leg-squat, drop-cut, triple-hop, cut-90
 
 # Select which pose estimation model to use; options are 'OpenPose' and 'hrnet'.
