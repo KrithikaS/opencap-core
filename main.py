@@ -115,15 +115,15 @@ def main(sessionName, trialName, trial_id, cameras_to_use=['all'],
         filtFreqs = {'gait':filterfrequency, 'default':filterfrequency}
     
     # Hard-code filter frequencies based on the activity
-    if 'LS' in trialName: # squat
+    if 'ss' in trialName or 'LS' in trialName: # squat
         filtFreqs = {'gait':filterfrequency, 'default':4}
-    elif 'DJ' in trialName: # drop-jump
+    elif 'dj' in trialName or 'DJ' in trialName: # drop-jump
         filtFreqs = {'gait':filterfrequency, 'default':30}
-    elif 'DC' in trialName: # drop-cut
+    elif 'dc' in trialName or 'DC' in trialName: # drop-cut
         filtFreqs = {'gait':filterfrequency, 'default':50}
-    elif 'TH' in trialName: # triple hop
+    elif 'TH' in trialName in trialName: # triple hop
         filtFreqs = {'gait':filterfrequency, 'default':50}
-    elif 'C9' in trialName: # run-cut
+    elif 'rc' in trialName or 'C9' in trialName: # run-cut
         filtFreqs = {'gait':filterfrequency, 'default':60}
     else: # keep the previous settings
         None
