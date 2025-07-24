@@ -18,6 +18,7 @@ API_URL = getAPIURL()
 session_id = '881ebd52-c1e7-4844-984d-7cc3ad5ec2b1'
 dynamic_trialNames = ['ddj1_1']
 cameras_to_use = ['all_available']
+overwrite_server_data = True # THIS WILL OVERWRITE DATA ON THE SERVER
 
 trialNames = getTrialNameIdMapping(session_id)
 dynamic_ids = [trialNames[name]['id'] for name in dynamic_trialNames]
@@ -34,14 +35,15 @@ for i_trial, dID in enumerate(dynamic_ids):
         poseDetector='hrnet',
         cameras_to_use=cameras_to_use)
     
-    # Write results to django
-    session_path = os.path.join(dataDir, 'Data', session_id)
-    postMotionData(dID,session_path,trial_name=dynamic_trialNames[i_trial],isNeutral=False,
-                    poseDetector='hrnet')
-    
-    # Write visualizer jsons to django
-    visualizerJson_path = getResultsPath(session_id, dID, 
-                                            resultType='visualizerJson', 
-                                            isDocker=False)
-    writeMediaToAPI(API_URL,visualizerJson_path,dID,
-                    tag="visualizerTransforms-json",deleteOldMedia=True)
+    if overwrite_server_data:
+        # Write results to django
+        session_path = os.path.join(dataDir, 'Data', session_id)
+        postMotionData(dID,session_path,trial_name=dynamic_trialNames[i_trial],isNeutral=False,
+                        poseDetector='hrnet')
+        
+        # Write visualizer jsons to django
+        visualizerJson_path = getResultsPath(session_id, dID, 
+                                                resultType='visualizerJson', 
+                                                isDocker=False)
+        writeMediaToAPI(API_URL,visualizerJson_path,dID,
+                        tag="visualizerTransforms-json",deleteOldMedia=True)
