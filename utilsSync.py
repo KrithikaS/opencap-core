@@ -373,6 +373,12 @@ def synchronizeVideoKeypoints(keypointList, confidenceList,
                                  sampleFreq=sampleFreq,
                                  )
 
+    if isGait:
+        print("This trial has been detected as gait - manually overwriting to False")
+        isGait = False
+    else:
+        print("This trial has been detected as NOT gait")
+
     if isHandPunch:
         syncActivity = 'handPunch'
     elif isGait:
@@ -386,6 +392,8 @@ def synchronizeVideoKeypoints(keypointList, confidenceList,
         filtFreq = filtFreqs['gait']
     else: 
         filtFreq = filtFreqs['default']
+    
+    print("Using filtFreq: ", filtFreq)
     
     # Filter keypoint data
     # sdKernel = sampleFreq/(2*np.pi*filtFreq) # not currently used, but in case using gaussian smoother (smoothKeypoints function) instead of butterworth to filter keypoints
