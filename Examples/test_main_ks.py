@@ -1,0 +1,56 @@
+import os
+import sys
+import numpy as np
+import pandas as pd
+
+thisDir = os.path.dirname(os.path.realpath(__file__))
+repoDir = os.path.abspath(os.path.join(thisDir,'../'))
+sys.path.append(repoDir)
+
+from utils import getTrialNameIdMapping, postMotionData, writeMediaToAPI
+from utilsServer import getResultsPath, checkAndGetPosePickles
+from utilsAPI import getAPIURL
+from main import main
+
+API_URL = getAPIURL()
+
+# Define session/trial details
+session_id = '44788707-43ee-4031-9e95-8724852da152'
+dynamic_trialNames = ['SLS_L2']
+cameras_to_use = ['all_available']
+is_neutral = False
+# poseDetector = 'hrnet'
+# resolutionPoseDetection = '1x736'
+# bbox_thr = 0.8
+overwrite_server_data = True # THIS WILL OVERWRITE DATA ON THE SERVER
+
+trialNames = getTrialNameIdMapping(session_id)
+dynamic_ids = [trialNames[name]['id'] for name in dynamic_trialNames]
+# dynamic_ids = dynamic_trialNames
+
+print('Processing ' + session_id)
+
+dataDir = os.path.join(thisDir, '')
+
+for i_trial, dID in enumerate(dynamic_ids):
+    session_path = os.path.join(dataDir, 'Data', session_id)
+    # checkAndGetPosePickles(dID, session_path, poseDetector, resolutionPoseDetection, bbox_thr)
+
+    main(session_id, dynamic_trialNames[i_trial], dID, 
+        dataDir=dataDir,
+        genericFolderNames=True,
+        poseDetector='hrnet',
+        cameras_to_use=cameras_to_use,
+        scaleModel=is_neutral)
+    
+    if overwrite_server_data:
+        # Write results to django
+        postMotionData(dID,session_path,trial_name=dynamic_trialNames[i_trial],isNeutral=False,
+                        poseDetector='hrnet')
+        
+        # Write visualizer jsons to django
+        visualizerJson_path = getResultsPath(session_id, dID, 
+                                                resultType='visualizerJson', 
+                                                isDocker=False)
+        writeMediaToAPI(API_URL,visualizerJson_path,dID,
+                        tag="visualizerTransforms-json",deleteOldMedia=True)
