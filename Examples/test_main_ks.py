@@ -15,8 +15,8 @@ from main import main
 API_URL = getAPIURL()
 
 # Define session/trial details
-session_id = '44788707-43ee-4031-9e95-8724852da152'
-dynamic_trialNames = ['SLS_L2']
+session_id = '881ebd52-c1e7-4844-984d-7cc3ad5ec2b1'
+dynamic_trialNames = ['ddj1_1']
 cameras_to_use = ['all_available']
 is_neutral = False
 # poseDetector = 'hrnet'
