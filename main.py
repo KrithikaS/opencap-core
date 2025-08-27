@@ -538,7 +538,8 @@ def main(sessionName, trialName, trial_id, cameras_to_use=['all'],
             os.makedirs(outputScaledModelDir, exist_ok=True)
             # Path setup file.
             if scalingSetup == 'any_pose':
-                genericSetupFile4ScalingName = 'Setup_scaling_LaiUhlrich2022_any_pose.xml'
+                # genericSetupFile4ScalingName = 'Setup_scaling_LaiUhlrich2022_any_pose.xml'
+                genericSetupFile4ScalingName = 'Setup_scaling_LaiUhlrich2022_KA.xml'
             else: # by default, use upright_standing_pose
                 # genericSetupFile4ScalingName = 'Setup_scaling_LaiUhlrich2022.xml'
                 genericSetupFile4ScalingName = 'Setup_scaling_LaiUhlrich2022_KA.xml'
